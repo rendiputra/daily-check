@@ -4,6 +4,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
+use App\Http\Middleware\IsNormalUser;
+use App\Http\Middleware\IsAdmin;
+
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -13,6 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        // $middleware->append(IsNormalUser::class);
+        // $middleware->append(IsAdmin::class);
+        $middleware->alias(['IsNormalUser' => \App\Http\Middleware\IsNormalUser::class]);
+        $middleware->alias(['IsAdmin' => \App\Http\Middleware\IsAdmin::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
