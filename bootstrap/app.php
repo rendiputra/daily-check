@@ -18,8 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
         //
         // $middleware->append(IsNormalUser::class);
         // $middleware->append(IsAdmin::class);
-        $middleware->alias(['IsNormalUser' => \App\Http\Middleware\IsNormalUser::class]);
-        $middleware->alias(['IsAdmin' => \App\Http\Middleware\IsAdmin::class]);
+        $middleware->alias(['IsNormalUser' => IsNormalUser::class]);
+        $middleware->alias(['IsAdmin' => IsAdmin::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

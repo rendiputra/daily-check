@@ -16,7 +16,8 @@ Route::middleware([
     // 'verified',
     config('jetstream.auth_session'),
     IsNormalUser::class,
-])->group(function () {
+])->controller(UserController::class)
+->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
 
